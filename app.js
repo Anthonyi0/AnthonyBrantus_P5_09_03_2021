@@ -1,22 +1,38 @@
-fetch('http://localhost:3000/api/cameras', {method: 'GET'})
-.then(function(response){ 
-    if(response.status === 200) {
-        return response.json()
-    }
-})
-.then(function(data) {
-    
-    let template = document.querySelector('template.product');
-    const products = document.querySelector('#products');
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const path = require('path');
 
-    data.forEach(element => {
-        let product = document.importNode(template.content, true);
-        product.querySelector('h4').innerHTML = element.name
-        product.querySelector('p').innerHTML = element.description;
-        product.querySelector('img').attributes.src.value = element.imageUrl;
-        product.querySelector('a').attributes.href.value = 'product.html?id='+ element._id;
+const cameraRoutes = require('./routes/camera');
+const teddyRoutes = require('./routes/teddy');
+const furnitureRoutes = require('./routes/furniture');
 
-        products.appendChild(product)
-    });
+const app = express();
 
-})
+mongoose.connect(
+  'mongodb+srv://will:nAcmfCoHGDgzrCHG@cluster0-pme76.mongodb.net/test?retryWrites=true',
+  { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log('Successfully connected to MongoDB Atlas!');
+  })
+  .catch((error) => {
+    console.log('Unable to connect to MongoDB Atlas!');
+    console.error(error);
+  });
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+  next();
+});
+
+app.use('/images', express.static(path.join(__dirname, 'images')));
+
+app.use(bodyParser.json());
+
+app.use('/api/cameras', cameraRoutes);
+app.use('/api/teddies', teddyRoutes);
+app.use('/api/furniture', furnitureRoutes);
+
+module.exports = app;
