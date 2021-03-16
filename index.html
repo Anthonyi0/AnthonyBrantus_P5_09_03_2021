@@ -1,34 +1,55 @@
 <!DOCTYPE html>
-<head>
-    <meta lang="fr" />
-    <meta charset="utf8" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>    
-
-    <script src="app.js"></script>
-    <style>
-        #products {
-            display: flex;
-        }
-
-        #products div {
-            width: 33%;
-
-        }
-    </style>
-</head>
-
-<body>
-    <template class="product">
-        <div class="card">
-            <img src="" style="width: 200px;"/>
-            <h4></h4>
-            <p></p>
-        </div>
-    </template>
-    <main>
-        <div id="products">
-            
-        </div>
-    </main>
-</body>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="keywords" content="E-Commerce,Caméra vintage.">
+        <meta name="description" content="Venez sur ce site de E-Commerce pour trouver vos futur Caméra vintage">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">      
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="index.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>  
+        <script src="app.js"></script>  
+        <title>Orinoco</title>
+    </head>
+    <body>
+        <header>
+            <div class="navbar navbar-dark bg-dark shadow-sm">
+            <div class="container">
+                <a href="#" class="navbar-brand d-flex align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                <strong>Orinoco</strong>
+                </a>
+                <a class="panier" href="panier.html">Panier</a>
+            </div>
+            </div>
+        </header>
+        <section class="py-5 text-center container">
+            <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">Caméra vintage</h1>
+                <p class="lead text-muted">Voici toutes la liste de nos produit, Nous espérons que vous trouverez votre bonheur.</p>
+            </div>
+            </div>
+        </section>
+            <!-- Info sur la création des produit grâce au code JS (s'affiche uniquement avec la console)-->
+            <template class="product">
+                <div class="card">
+                    <img src=""/>
+                    <h4 class="title_card"></h4>
+                    <p class="text_card"></p>
+                    <a class="lien_productSheet" href=""><button>Fiche du produit</button></a>
+                </div>
+            </template>
+            <!-- Fin de l'info sur la création des produit grâce au code JS (s'affiche uniquement avec la console)-->
+            <!-- Création du produit sur la page internet-->
+            <main>
+                <div id="products">
+                   
+                </div>
+            </main>
+            <!-- Fin de la création du produit sur la page internet-->
+            <footer>
+                <p class="text_footer">© 2020-2021 Orinoco.All rights reserved <br>Projet 5 - Parcours Developpeur Web - OpenClassrooms</p>
+            </footer>
+    </body>
+</html>
