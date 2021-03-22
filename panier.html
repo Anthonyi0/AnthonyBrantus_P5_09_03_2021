@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr"> 
+    <head>
+        <meta charset="utf-8" />
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">      
+        
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="panier.css">
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>  
+        <script src ="app.js"></script>
+        <script src="panier.js"></script>
+
+        <title>Panier</title>
+    </head>
+<body>
+    <header>
+        <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container">
+            <a href="#" class="navbar-brand d-flex align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+            <strong>Orinoco</strong>
+            </a>
+            <a href="index.html" class="back">Retour à la page d'accueil</a>
+        </div>
+        </div>
+    </header>
+    <section>
+            <h1>Liste des produits séléctionner :</h1>
+    </section>
+    <main>
+    <!-- Création du panier sur la page internet-->
+        <h2>Récapitulatif de votre commande</h2>
+    <!-- Fin de la création du panier sur la page internet-->
+    <!-- Création du formulaire sur la page internet-->
+        <section class="formulaire_commande">
+            <h2 class="titleForm">Passer la commande de votre(vos) Caméra(s) Vintage </h2>
+            <div class="cadre">
+              <form method="post" name="contact" id="contact">
+                <div class="form-group">
+                    <label for="prenom"> Prénom</label>
+                    <input
+                      type="text"
+                      id="prenom"
+                      name="prenom"
+                      class="form-control"
+                      required
+                      placeholder="Renseignez votre prénom"
+                    />
+                </div>
+                <div class="form-group">
+                  <label for="nom"> Nom de famille </label>
+                  <input
+                    type="text"
+                    id="nom"
+                    name="nom"
+                    class="form-control"
+                    required
+                    autofocus
+                    placeholder="Renseignez votre nom de famille"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="email">Adresse email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="form-control"
+                    required
+                    placeholder="Entrez une adresse mail valide"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="adresse"> Adresse postale et de facturation</label>
+                  <input
+                    type="text"
+                    id="adresse"
+                    name="adresse"
+                    class="form-control"
+                    required
+                    placeholder="Ex: 4 Privet Drive"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="ville"> Ville</label>
+                  <input
+                    type="text"
+                    id="ville"
+                    name="ville"
+                    class="form-control"
+                    required
+                    placeholder="Ex: Little Whinging"
+                  />
+                </div>
+                <div class="button">
+                    <button type="submit" value="Commander">Commander</button>
+                </div>
+              </form>
+            </div>
+          </section>  
+        <!-- Fin de la Création du formulaire sur la page internet-->  
+    </main>
+    <footer>
+        <p class="text_footer">© 2020-2021 Orinoco.All rights reserved <br>Projet 5 - Parcours Developpeur Web - OpenClassrooms</p>
+    </footer>
+</body>

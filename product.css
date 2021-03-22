@@ -49,7 +49,7 @@ select{
 a{
     text-decoration: none;
 }
-.pannier{
+.panier{
     display: flex;
     justify-content: center;
 }

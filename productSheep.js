@@ -1,7 +1,6 @@
- let params = (new URL(document.location)).searchParams;
+let panier = getpanier()
+let params = (new URL(document.location)).searchParams;
     console.log(params.get('id'));
-
-
 
 fetch('http://localhost:3000/api/cameras/'+params.get('id'), {method: 'GET'})
 .then(response => { 
@@ -16,10 +15,21 @@ fetch('http://localhost:3000/api/cameras/'+params.get('id'), {method: 'GET'})
     productNode.querySelector('h4').innerText = product.name;
     productNode.querySelector('.text_card').innerHTML = product.description;
     productNode.querySelector('img').attributes.src.value = product.imageUrl;
-    productNode.querySelector('.price').innerHTML = "Prix : " + product.price + "€";
-    productNode.querySelector('option').innerHTML = product.lenses;
-    
+    productNode.querySelector('.price').innerHTML = "Prix : " + product.price + " €";
+    let  select = productNode.querySelector('select');
+    product.lenses.forEach(element => {
+        let option = document.createElement('option')
+        option.text = element
+        select.appendChild(option)
+    }); 
+    productNode.querySelector("a").addEventListener('click', event =>{
+        event.preventDefault()
+        panier.products.push(product)
+        localStorage.setItem('panier',JSON.stringify(panier))
+        window.location.replace('panier.html')
+    })
 }).catch(error => {
     document.querySelector('#product').innerHTML = 'Le produit n\'existe pas';
+    console.log(error)
 })
 /* Fin de la fonction qui utilise l'api pour crée la fiche produit*/
