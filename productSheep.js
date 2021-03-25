@@ -27,6 +27,7 @@ fetch('http://localhost:3000/api/cameras/'+params.get('id'), {method: 'GET'})
         panier.products.push(product)
         localStorage.setItem('panier',JSON.stringify(panier))
         window.location.replace('panier.html')
+        alert("Vous avez ajouté ce produit dans votre panier")
     })
 }).catch(error => {
     document.querySelector('#product').innerHTML = 'Le produit n\'existe pas';

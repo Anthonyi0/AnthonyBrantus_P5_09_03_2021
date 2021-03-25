@@ -8,10 +8,9 @@
         
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="panier.css">
-        
+       
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>  
-        <script src ="app.js"></script>
-        <script src="panier.js"></script>
+      
 
         <title>Panier</title>
     </head>
@@ -27,12 +26,24 @@
         </div>
         </div>
     </header>
-    <section>
-            <h1>Liste des produits séléctionner :</h1>
-    </section>
+      <h1>Récapitulatif de votre commande</h1>
     <main>
-    <!-- Création du panier sur la page internet-->
-        <h2>Récapitulatif de votre commande</h2>
+    <!-- Création du panier sur la page internet-->   
+        <template class="product">
+          <div class="card">
+              <img src=""/>
+            <div class="textProduct">
+              <h4 class="title_card"></h4>
+              <p class="description"></p>
+              <p class="price"></p>
+              <div class="button">
+                <button >2</button>
+              </div>
+            </div>
+          </div>
+      </template>
+      <div id="products">            
+      </div>
     <!-- Fin de la création du panier sur la page internet-->
     <!-- Création du formulaire sur la page internet-->
         <section class="formulaire_commande">
@@ -49,7 +60,7 @@
                       required
                       placeholder="Renseignez votre prénom"
                     />
-                </div>
+                </div>      
                 <div class="form-group">
                   <label for="nom"> Nom de famille </label>
                   <input
@@ -106,4 +117,6 @@
     <footer>
         <p class="text_footer">© 2020-2021 Orinoco.All rights reserved <br>Projet 5 - Parcours Developpeur Web - OpenClassrooms</p>
     </footer>
+    <script src ="app.js"></script>
+    <script src="panier.js"></script>
 </body>

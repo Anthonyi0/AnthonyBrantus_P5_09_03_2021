@@ -1,4 +1,3 @@
-let panier = getpanier()
 fetch('http://localhost:3000/api/cameras', {method: 'GET'})
 .then(function(response){ 
     if(response.status === 200) {

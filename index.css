@@ -25,6 +25,7 @@
 .card{
     border-color: #fff;
     border-radius: 40px 40px 0 0;
+    padding-bottom: 1rem;
 }
 img{
     width: auto;
@@ -43,14 +44,15 @@ img{
     text-decoration: none;
     color: black;
     text-align: center;
-    padding: 0px 20px 15px 20px;
-}
-button{
+    padding: 5px 10px 5px 10px;
+    display: flex;
+    justify-content: center;
     border-color: #a88734 #9c7e31 #846a29;
     background: #f0c14b;
-    padding: 5px 10px 5px 10px;
     border-radius: 10px;
     font-weight: bold;
+    max-width: 165px;
+    margin: auto;
 }
 .text_footer{
     text-align: center;

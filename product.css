@@ -52,13 +52,13 @@ a{
 .panier{
     display: flex;
     justify-content: center;
-}
-button{
     border-color: #a88734 #9c7e31 #846a29;
     background: #f0c14b;
     padding: 5px 10px 5px 10px;
     border-radius: 10px;
     font-weight: bold;
+    max-width: 165px;
+    margin: auto;
 }
 .text_footer{
     text-align: center;
