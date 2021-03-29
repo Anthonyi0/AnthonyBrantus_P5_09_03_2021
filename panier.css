@@ -50,16 +50,25 @@ img{
 .form-control{
   border: 1px solid black;
 }
-.button{
-  text-align: center;
-  margin: 2rem 0;
-}
-button{
-  border-color: #a88734 #9c7e31 #846a29;
+.lienConfirmation{
+  text-decoration: none;
+  color: black;
   background: #f0c14b;
+  box-shadow: 1px 1px black , -1px -1px black;
+  font-weight: bold;
+  text-align: center;
   padding: 5px 10px 5px 10px;
   border-radius: 10px;
-  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  max-width: 165px;
+  margin: 5px auto 20px auto;
+}
+a:focus{
+  color: black;
+}
+a:hover{
+  color: black;
 }
 .text_footer{
     text-align: center;

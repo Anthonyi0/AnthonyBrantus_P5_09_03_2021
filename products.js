@@ -4,7 +4,7 @@ fetch('http://localhost:3000/api/cameras', {method: 'GET'})
         return response.json()
     }
 })
-/*Fonction qui utilise l'api pour crée les objets sur la page accueil*/
+//Fonction qui utilise l'api pour crée les objets sur la page accueil
 .then(function(data) {
     
     const template = document.querySelector('template.product');
@@ -20,4 +20,4 @@ fetch('http://localhost:3000/api/cameras', {method: 'GET'})
         products.appendChild(product)
     });
 })
-/*Fin de la fonction qui utilise l'api pour crée les objets sur la page d'accueil*/
+//Fin de la fonction qui utilise l'api pour crée les objets sur la page d'accueil

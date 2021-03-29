@@ -1,36 +1,25 @@
 var panier = getpanier()
 let panierProduct = panier.products;
+
 const template = document.querySelector('template.product');
 const products = document.querySelector('#products');
 
+//Fonction qui utilise le localstorage pour crée le panier 
 panierProduct.forEach(element => {
     let product = document.importNode(template.content, true);
-        product.querySelector('h4').innerHTML = element.name;
-        product.querySelector('.description').innerHTML = element.description;
-        product.querySelector('img').attributes.src.value = element.imageUrl;
-        product.querySelector('.price').innerHTML = "Prix : " + element.price + " €";
+        product.querySelector('h4').innerText = element.product.name;
+        product.querySelector('.description').innerText = element.product.description;
+        product.querySelector('img').attributes.src.value = element.product.imageUrl;
+        product.querySelector('.price').innerText = "Prix : " + element.product.price + " €";
+        product.querySelector('.option').innerText = element.option;
        
         products.appendChild(product)
 });
+//Fin de la Fonction qui utilise le localstorage pour crée le panier
 
-/*
-for(let i = 0; i < products.length; i++){
-    showPanier = products[i]
-    console.log(showPanier);  
-    
-    productNode = document.querySelector('#product');
-    productNode.querySelector('.title_card').innerText = showPanier.name;
-    productNode.querySelector('.text_card').innerHTML = showPanier.description;
-    productNode.querySelector('img').attributes.src.value = showPanier.imageUrl;
-    productNode.querySelector('.price').innerHTML = "Prix : " + showPanier.price + " €";
-     
-    }
-*/
 
 function backEnd(){
-
-    panier
-    /*Récupérer les valeurs du formulaire*/
+    //Récupérer les valeurs du formulaire
     var contact = {
         firstName : nom.value,
         lastName : prenom.value,
@@ -38,11 +27,12 @@ function backEnd(){
         city : ville.value,
         email : email.value
     }
-    /* Envoyer les données au serveur*/        
+    //Envoyer les données au serveur        
     fetch('http://localhost:3000/api/cameras/order',{
         method: 'POST' , 
         headers : { 
-            'Content-Type' : 'application/json'
+            'Content-Type' : 'application/json',
+            'Accept': 'application/json'
         }
     })
     .then(function(response){ 

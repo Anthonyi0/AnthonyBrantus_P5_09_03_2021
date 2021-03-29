@@ -7,7 +7,7 @@ fetch('http://localhost:3000/api/cameras/'+params.get('id'), {method: 'GET'})
     if(response.status === 200) {
         return response.json()
     }
-/*Fonction qui utilise l'api pour crée la fiche produit*/
+//Fonction qui utilise l'api pour crée la fiche produit
 }).then( product  => {
     console.log(product);
 
@@ -24,7 +24,11 @@ fetch('http://localhost:3000/api/cameras/'+params.get('id'), {method: 'GET'})
     }); 
     productNode.querySelector("a").addEventListener('click', event =>{
         event.preventDefault()
-        panier.products.push(product)
+        panier.products.push({
+            option: select.value,
+            product: product,
+            quantite: productNode.querySelector('.quantity').value
+        })
         localStorage.setItem('panier',JSON.stringify(panier))
         window.location.replace('panier.html')
         alert("Vous avez ajouté ce produit dans votre panier")
@@ -33,4 +37,4 @@ fetch('http://localhost:3000/api/cameras/'+params.get('id'), {method: 'GET'})
     document.querySelector('#product').innerHTML = 'Le produit n\'existe pas';
     console.log(error)
 })
-/* Fin de la fonction qui utilise l'api pour crée la fiche produit*/
+//Fin de la fonction qui utilise l'api pour crée la fiche produit
