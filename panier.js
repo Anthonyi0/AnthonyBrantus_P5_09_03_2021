@@ -7,15 +7,34 @@ const products = document.querySelector('#products');
 //Fonction qui utilise le localstorage pour crée le panier 
 panierProduct.forEach(element => {
     let product = document.importNode(template.content, true);
-        product.querySelector('h4').innerText = element.product.name;
-        product.querySelector('.description').innerText = element.product.description;
-        product.querySelector('img').attributes.src.value = element.product.imageUrl;
-        product.querySelector('.price').innerText = "Prix : " + element.product.price + " €";
+        product.querySelector('h4').innerText = element.name;
+        product.querySelector('.description').innerText = element.description;
+        product.querySelector('img').attributes.src.value = element.image;
+        product.querySelector('.price').innerText = element.price;
         product.querySelector('.option').innerText = element.option;
-       
+        product.querySelector('.quantity').innerText = element.quantity;
+
         products.appendChild(product)
 });
 //Fin de la Fonction qui utilise le localstorage pour crée le panier
+totalPrice = 0
+totalProduit = 0 
+
+/*Permet de faire le calcule de Sous-Total 
+and Nombre de produit*/
+for (let i = 0 ; i < panierProduct.length; i++ ){
+    totalPrice = totalPrice + panierProduct[i].price++;
+    totalProduit = totalProduit + panierProduct[i].quantity++;
+}
+let sousTotal = document.querySelector('.sousTotal').innerText = totalPrice;
+
+// permet de mettre un S si il y à plusieurs produit 
+if (totalProduit <= 1){
+    let totalArticle = document.querySelector('.totalArticle').innerText = totalProduit + " Produit";
+}else{
+    let totalArticle = document.querySelector('.totalArticle').innerText = totalProduit + " Produits";
+}
+
 
 
 function backEnd(){

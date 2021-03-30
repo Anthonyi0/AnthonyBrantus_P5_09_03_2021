@@ -35,8 +35,13 @@ img{
 .description{
   padding: 0 1rem;
 }
-.price{
+.text_price,.quantity,.option{
   font-weight: bold;
+}
+.subtotals{
+  border-top: 1px solid silver;
+  text-align: end;
+  padding: 1rem 5rem 0 0;
 }
 .titleForm{
   margin: 2rem auto;

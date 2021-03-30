@@ -29,7 +29,7 @@ img{
     max-width: 100%;
     object-fit: cover;
 }
-.text_card{
+.description{
     color: black;
     margin-top: 1rem;
     font-size: 1.3em; 
@@ -41,10 +41,15 @@ label{
 select{
     margin: 1rem 0 0 2rem;
 }
-.price{
+.text_price{
     font-size: 2em;
     display: block;
     padding: 2rem 0 0 2rem;
+}
+.quantity{
+    margin: 1rem 0 2rem 2rem;
+    max-width: 100px;
+    text-align: center;
 }
 a{
     text-decoration: none;
@@ -67,3 +72,8 @@ a{
     color: #fff;
     margin-bottom: 0;
 }
+@media screen and (max-width: 900px){
+    #product{
+        max-width: 80%;
+    }
+  }
