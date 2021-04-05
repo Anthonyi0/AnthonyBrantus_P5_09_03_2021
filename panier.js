@@ -1,10 +1,11 @@
 var panier = getpanier()
 let panierProduct = panier.products;
+let buttonNegatif = document.querySelector(".buttonNegatif");
+let buttonPossitif = document.querySelector(".buttonPossitif");
 
 const template = document.querySelector('template.product');
 const products = document.querySelector('#products');
 
-//Fonction qui utilise le localstorage pour crée le panier 
 panierProduct.forEach(element => {
     let product = document.importNode(template.content, true);
         product.querySelector('h4').innerText = element.name;
@@ -13,40 +14,35 @@ panierProduct.forEach(element => {
         product.querySelector('.price').innerText = element.price;
         product.querySelector('.option').innerText = element.option;
         product.querySelector('.quantity').innerText = element.quantity;
-
-        products.appendChild(product)
+    
+        products.appendChild(product)  
 });
-//Fin de la Fonction qui utilise le localstorage pour crée le panier
 totalPrice = 0
 totalProduit = 0 
 
-/*Permet de faire le calcule de Sous-Total 
-and Nombre de produit*/
+//Permet de faire le calcule de Sous-Total and Nombre de produit*/
 for (let i = 0 ; i < panierProduct.length; i++ ){
     totalPrice = totalPrice + panierProduct[i].price++;
     totalProduit = totalProduit + panierProduct[i].quantity++;
 }
-let sousTotal = document.querySelector('.sousTotal').innerText = totalPrice;
+let sousTotal = document.querySelector('.sousTotal').innerText = totalPrice; 
+let totalArticle = document.querySelector('.totalArticle').innerText = totalProduit + " Produit" + totalProduit > 1?"s" : "";
 
-// permet de mettre un S si il y à plusieurs produit 
-if (totalProduit <= 1){
-    let totalArticle = document.querySelector('.totalArticle').innerText = totalProduit + " Produit";
-}else{
-    let totalArticle = document.querySelector('.totalArticle').innerText = totalProduit + " Produits";
-}
-
-
-
-function backEnd(){
-    //Récupérer les valeurs du formulaire
-    var contact = {
-        firstName : nom.value,
-        lastName : prenom.value,
-        address : addresse.value,
-        city : ville.value,
-        email : email.value
-    }
-    //Envoyer les données au serveur        
+let form = document.querySelector("form");
+form.addEventListener("submit",event =>{
+    event.preventDefault()
+    let recupFormulaire = new FormData(form)
+    panier
+    var data = {
+        contact:{
+            firstName : recupFormulaire.get("prenom"),
+            lastName : recupFormulaire.get("nom"),
+            address : recupFormulaire.get("adresse"),
+            city : recupFormulaire.get("ville"),
+            email : recupFormulaire.get("email")
+        },
+        products:["1"]
+    }       
     fetch('http://localhost:3000/api/cameras/order',{
         method: 'POST' , 
         headers : { 
@@ -58,8 +54,8 @@ function backEnd(){
         if(response.status === 200) {
             return response.json()
         }
-    }
+    })
     .then(function(data){
         console.log(data)
     })
-    )}
+})

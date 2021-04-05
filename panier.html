@@ -10,8 +10,6 @@
         <link rel="stylesheet" type="text/css" href="panier.css">
        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>  
-      
-
         <title>Panier</title>
     </head>
 <body>
@@ -38,7 +36,8 @@
               <p class="description"></p>
               <p class="text_price">Prix: <span class="price"></span> €</p>
               <p class="text_option">Option de l'appareil : <span class="option"></span></p>
-              <p class="text_quantity">Nombre de produit : <span class="quantity"></span></p>
+              <p class="text_quantity">Nombre de produit : <button class="buttonNegatif">-</button><span class="quantity"></span><button class="buttonPossitif">+</button></p>
+              <button class="delete">Supprimer du panier</button>
             </div>
           </div>
         </template>
@@ -110,7 +109,7 @@
                     placeholder="Ex: Little Whinging"
                   />
                 </div>
-                <a class="lienConfirmation" href="#">Commander</a>
+                <button type="submit" class="lienConfirmation">Commander</button>
               </form>
             </div>
           </section>  
