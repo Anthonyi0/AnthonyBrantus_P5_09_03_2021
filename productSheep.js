@@ -40,7 +40,7 @@ fetch('http://localhost:3000/api/cameras/'+ id, {method: 'GET'})
                 image: image,
                 option: select.value,
                 quantity: quantity,
-                price: price
+                unitPrice: price,
             })
         }
         if (window.confirm("Validation de l'article")){
