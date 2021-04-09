@@ -12,7 +12,7 @@ panierProduct.forEach(element => {
         product.querySelector('.quantity').innerText = element.quantity;
         product.querySelector('.priceTotal').innerText = element.unitPrice * element.quantity;   
 
-        products.appendChild(product)  
+        products.appendChild(product)    
 });
 totalPrice = 0
 totalProduit = 0
@@ -28,9 +28,9 @@ if (totalProduit <= 1){
 }else{
     let totalArticle = document.querySelector('.totalArticle').innerText = totalProduit + " Produits";
 }
-
 let form = document.querySelector("form");
 form.addEventListener("submit",event =>{
+    event.preventDefault()
     let recupFormulaire = new FormData(form)
     var data = {
         contact:{
@@ -44,19 +44,27 @@ form.addEventListener("submit",event =>{
     }
     panierProduct.forEach(element => {
         data.products.push(element.id)
-    })
-    console.log(data)       
+    })     
     fetch('http://localhost:3000/api/cameras/order',{
         method: 'POST' ,
-        body: JSON.stringify(data), 
         headers : { 
             'Content-Type' : 'application/json',
             'Accept': 'application/json'
-        } 
+        },
+        body: JSON.stringify(data)
     })
-    .then(function(response){ 
+    .then(function(response){
         if(response.status === 201) {
+            console.log(response)
             return response.json()
         }
+    })
+    .then(data => {
+        localStorage.clear()
+        localStorage.setItem('contact',JSON.stringify(data.contact));
+        localStorage.setItem('orderId',JSON.stringify(data.orderId));
+        localStorage.setItem('totalPrice',JSON.stringify(sousTotal));
+        localStorage.setItem('quantity',JSON.stringify(totalProduit));
+        window.location.replace('confirmation.html'); 
     })
 })

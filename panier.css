@@ -35,7 +35,7 @@ img{
 .description{
   padding: 0 1rem;
 }
-.text_price,.quantity,.option{
+.text_price,.quantity,.option,.nameDelete{
   font-weight: bold;
 }
 .quantity{
