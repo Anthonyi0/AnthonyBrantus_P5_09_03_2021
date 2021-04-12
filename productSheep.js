@@ -23,7 +23,7 @@ fetch('http://localhost:3000/api/cameras/'+ id, {method: 'GET'})
     }); 
     productNode.querySelector("a").addEventListener('click', event =>{
         event.preventDefault()
-        let quantity =  parseInt(productNode.querySelector('.quantity').value);
+        let quantity =  parseInt(productNode.querySelector('#quantity').value);
         let productExist = false
         panier.products.forEach(element =>{
             //Vérifie si un produit à le même id et les options
