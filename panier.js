@@ -1,33 +1,47 @@
 var panier = getpanier()
-let panierProduct = panier.products;
+let panierProducts = panier.products;
 const template = document.querySelector('template.product');
 const products = document.querySelector('#products');
-panierProduct.forEach(element => {
-    let product = document.importNode(template.content, true);
-        product.querySelector('h4').innerText = element.name;
-        product.querySelector('.description').innerText = element.description;
-        product.querySelector('img').attributes.src.value = element.image;
-        product.querySelector('.unitPrice').innerText = element.unitPrice;
-        product.querySelector('.option').innerText = element.option;
-        product.querySelector('.quantity').innerText = element.quantity;
-        product.querySelector('.priceTotal').innerText = element.unitPrice * element.quantity;   
-
-        products.appendChild(product)    
-});
-totalPrice = 0
-totalProduit = 0
-//Permet de faire le calcule de Sous-Total and Nombre de produit*/
-for (let i = 0 ; i < panierProduct.length; i++ ){
-    totalPrice = totalPrice + (panierProduct[i].unitPrice * panierProduct[i].quantity)
-    totalProduit = totalProduit + panierProduct[i].quantity++;
+function renderProducts(panierProducts){
+    products.innerHTML = ''
+    panierProducts.forEach((element,key) => {
+        let product = document.importNode(template.content, true);
+            product.querySelector('h4').innerText = element.name;
+            product.querySelector('.description').innerText = element.description;
+            product.querySelector('img').attributes.src.value = element.image;
+            product.querySelector('.unitPrice').innerText = element.unitPrice;
+            product.querySelector('.option').innerText = element.option;
+            product.querySelector('.quantity').innerText = element.quantity;
+            product.querySelector('.priceTotal').innerText = element.unitPrice * element.quantity;   
+        
+        let drop = product.querySelector('.supprimer');
+        drop.attributes.getNamedItem('data-index').value = key;
+        drop.addEventListener('click',event=>{
+            event.preventDefault()
+            let index = event.target.attributes.getNamedItem('data-index').value;
+            panierProducts = panierProducts.filter((p,i) =>{
+                return i != index
+            })
+            renderProducts(panierProducts)
+        })
+            products.appendChild(product)    
+    });
+    totalPrice = 0
+    totalProduit = 0
+    //Permet de faire le calcule de Sous-Total and Nombre de produit*/
+    for (let i = 0 ; i < panierProducts.length; i++ ){
+        totalPrice = totalPrice + (panierProducts[i].unitPrice * panierProducts[i].quantity)
+        totalProduit = totalProduit + panierProducts[i].quantity;
+    }
+    let sousTotal = document.querySelector('.sousTotal').innerText = totalPrice; 
+    // permet de mettre un S si il y à plusieurs produit 
+    if (totalProduit <= 1){
+        let totalArticle = document.querySelector('.totalArticle').innerText = totalProduit + " Produit";
+    }else{
+        let totalArticle = document.querySelector('.totalArticle').innerText = totalProduit + " Produits";
+    }
 }
-let sousTotal = document.querySelector('.sousTotal').innerText = totalPrice; 
-// permet de mettre un S si il y à plusieurs produit 
-if (totalProduit <= 1){
-    let totalArticle = document.querySelector('.totalArticle').innerText = totalProduit + " Produit";
-}else{
-    let totalArticle = document.querySelector('.totalArticle').innerText = totalProduit + " Produits";
-}
+renderProducts(panierProducts)
 let form = document.querySelector("form");
 form.addEventListener("submit",event =>{
     event.preventDefault()
@@ -42,7 +56,7 @@ form.addEventListener("submit",event =>{
         },
         products:[]
     }
-    panierProduct.forEach(element => {
+    panierProducts.forEach(element => {
         data.products.push(element.id)
     })     
     fetch('http://localhost:3000/api/cameras/order',{
