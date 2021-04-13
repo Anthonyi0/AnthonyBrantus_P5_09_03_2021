@@ -22,24 +22,27 @@ function renderProducts(panierProducts){
             panierProducts = panierProducts.filter((p,i) =>{
                 return i != index
             })
+            localStorage.clear()
+            localStorage.setItem('panier' , JSON.stringify({products:panierProducts}))
             renderProducts(panierProducts)
+            window.location.reload()
         })
             products.appendChild(product)    
     });
-    totalPrice = 0
-    totalProduit = 0
-    //Permet de faire le calcule de Sous-Total and Nombre de produit*/
-    for (let i = 0 ; i < panierProducts.length; i++ ){
-        totalPrice = totalPrice + (panierProducts[i].unitPrice * panierProducts[i].quantity)
-        totalProduit = totalProduit + panierProducts[i].quantity;
-    }
-    let sousTotal = document.querySelector('.sousTotal').innerText = totalPrice; 
-    // permet de mettre un S si il y à plusieurs produit 
-    if (totalProduit <= 1){
-        let totalArticle = document.querySelector('.totalArticle').innerText = totalProduit + " Produit";
-    }else{
-        let totalArticle = document.querySelector('.totalArticle').innerText = totalProduit + " Produits";
-    }
+}
+totalPrice = 0
+totalProduit = 0
+//Permet de faire le calcule de Sous-Total and Nombre de produit*/
+for (let i = 0 ; i < panierProducts.length; i++ ){
+    totalPrice = totalPrice + (panierProducts[i].unitPrice * panierProducts[i].quantity)
+    totalProduit = totalProduit + panierProducts[i].quantity;
+}
+let sousTotal = document.querySelector('.sousTotal').innerText = totalPrice; 
+// permet de mettre un S si il y à plusieurs produit 
+if (totalProduit <= 1){
+    let totalArticle = document.querySelector('.totalArticle').innerText = totalProduit + " Produit";
+}else{
+    let totalArticle = document.querySelector('.totalArticle').innerText = totalProduit + " Produits";
 }
 renderProducts(panierProducts)
 let form = document.querySelector("form");
