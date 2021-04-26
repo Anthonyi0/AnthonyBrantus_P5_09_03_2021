@@ -3,6 +3,9 @@ fetch('http://localhost:3000/api/cameras', {method: 'GET'})
     if(response.status === 200) {
         return response.json()
     }
+}).catch(error => {
+    document.querySelector('#products').innerHTML = "Désolez une erreur avec le serveur s'est produite";
+    console.log(error)
 })
 //Fonction qui utilise l'api pour crée les objets sur la page accueil
 .then(function(data) {

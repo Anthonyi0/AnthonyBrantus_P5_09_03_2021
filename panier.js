@@ -52,7 +52,8 @@ form.addEventListener("submit",event =>{
     if(panierProducts.length === 0){
         window.alert("Votre Panier est vide.Vous allez être rediriger à la page d'acceuil")
         window.location.replace('index.html'); 
-    }else{
+    }
+    else{
     let recupFormulaire = new FormData(form)
     var data = {
         contact:{
@@ -89,6 +90,9 @@ form.addEventListener("submit",event =>{
             localStorage.setItem('quantity',JSON.stringify(totalProduit));
             localStorage.setItem('dateValidationCommande',JSON.stringify(date.toLocaleDateString()));
             window.location.replace('confirmation.html'); 
-    })
+    }).catch(error => {
+        document.querySelector('body').innerHTML = "Désolez une erreur avec le serveur s'est produite";
+        console.log(error)
+      })
     }
 })

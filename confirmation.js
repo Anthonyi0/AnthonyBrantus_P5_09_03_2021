@@ -11,6 +11,9 @@ let city = document.querySelector('.city').innerText = contact.city;
 let finish = document.querySelector('.finish').addEventListener("click",event=>{
     location.replace('index.html')
     localStorage.clear()
+}).catch(error => {
+    document.querySelector('#products').innerHTML = "Désolez une erreur avec le serveur s'est produite";
+    console.log(error)
 })
 
 // permet de mettre un S si il y à plusieurs produit 
