@@ -14,7 +14,7 @@ fetch('http://localhost:3000/api/cameras/'+ id, {method: 'GET'})
     let name = productNode.querySelector('h4').innerText = product.name;
     let description = productNode.querySelector('.description').innerText = product.description;
     let image = productNode.querySelector('img').attributes.src.value = product.imageUrl;
-    let price = productNode.querySelector('.price').innerText = product.price/100;
+    let price = productNode.querySelector('.price').innerText = product.price;
     let select = productNode.querySelector('select');
     product.lenses.forEach(element => {
         let option = document.createElement('option')

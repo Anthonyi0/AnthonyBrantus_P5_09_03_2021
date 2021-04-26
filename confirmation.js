@@ -2,6 +2,7 @@ let totalArticle = localStorage.quantity;
 let contact = localStorage.contact;
 contact = JSON.parse(contact);
 
+let date = document.querySelector('.date').innerText = JSON.parse(localStorage.dateValidationCommande);
 let price = document.querySelector('.price').innerText = localStorage.totalPrice + " €";
 let id = document.querySelector('.id').innerText = JSON.parse(localStorage.orderId);
 let name = document.querySelector('.name').innerText = contact.firstName + " " + contact.lastName

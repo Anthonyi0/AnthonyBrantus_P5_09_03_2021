@@ -32,7 +32,7 @@ function renderProducts(panierProducts){
 }
 totalPrice = 0
 totalProduit = 0
-//Permet de faire le calcule de Sous-Total and Nombre de produit*/
+//Permet de faire le calcule de Sous-Total and Nombre de produit
 for (let i = 0 ; i < panierProducts.length; i++ ){
     totalPrice = totalPrice + (panierProducts[i].unitPrice * panierProducts[i].quantity)
     totalProduit = totalProduit + panierProducts[i].quantity;
@@ -45,9 +45,14 @@ if (totalProduit <= 1){
     let totalArticle = document.querySelector('.totalArticle').innerText = totalProduit + " Produits";
 }
 renderProducts(panierProducts)
+let date = new Date();
 let form = document.querySelector("form");
 form.addEventListener("submit",event =>{
     event.preventDefault()
+    if(panierProducts.length === 0){
+        window.alert("Votre Panier est vide.Vous allez être rediriger à la page d'acceuil")
+        window.location.replace('index.html'); 
+    }else{
     let recupFormulaire = new FormData(form)
     var data = {
         contact:{
@@ -77,11 +82,13 @@ form.addEventListener("submit",event =>{
         }
     })
     .then(data => {
-        localStorage.clear()
-        localStorage.setItem('contact',JSON.stringify(data.contact));
-        localStorage.setItem('orderId',JSON.stringify(data.orderId));
-        localStorage.setItem('totalPrice',JSON.stringify(sousTotal));
-        localStorage.setItem('quantity',JSON.stringify(totalProduit));
-        window.location.replace('confirmation.html'); 
+            localStorage.clear()
+            localStorage.setItem('contact',JSON.stringify(data.contact));
+            localStorage.setItem('orderId',JSON.stringify(data.orderId));
+            localStorage.setItem('totalPrice',JSON.stringify(sousTotal));
+            localStorage.setItem('quantity',JSON.stringify(totalProduit));
+            localStorage.setItem('dateValidationCommande',JSON.stringify(date.toLocaleDateString()));
+            window.location.replace('confirmation.html'); 
     })
+    }
 })
